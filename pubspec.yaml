@@ -1,0 +1,32 @@
+name: tiktok
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=3.4.1 <4.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.6
+  flutter_svg: ^2.0.10+1
+  get: 4.6.6
+  flutter: 
+    sdk: flutter
+  styled_widget: ^0.4.1
+  video_player: ^2.8.6
+  marquee_list: ^1.0.0
+  flutter_animate: ^4.5.0
+
+dev_dependencies: 
+  flutter_lints: ^3.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/videos/
+    - assets/images/
+    - assets/videos/profile/
+
