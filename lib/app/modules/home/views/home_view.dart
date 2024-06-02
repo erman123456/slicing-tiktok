@@ -21,7 +21,44 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: white,
       appBar: _appBar(),
       body: body(),
+      bottomNavigationBar: bottomNav(),
     );
+  }
+
+  Widget bottomNav() {
+    return [
+      svgIcon(Assets.home, "Home"),
+      svgIcon(Assets.shop, "Shop"),
+      SvgPicture.asset(
+        Assets.plus,
+        width: 30,
+        height: 30,
+      ).padding(bottom: 30),
+      svgIcon(Assets.inbox, "Inbox",size: 20),
+      svgIcon(Assets.profile, "Profile", isActive: true, size: 20),
+    ]
+        .toRow(mainAxisAlignment: MainAxisAlignment.spaceBetween).border(color: Colors.black)
+        .padding(top: 10, horizontal: 25.0)
+        .height(80).border(color: Colors.grey.shade200, top: 1);
+  }
+
+  Widget svgIcon(String icon, String name, {isActive = false, double size = 25.0}) {
+    return [
+      SvgPicture.asset(
+        icon,
+        width: size,
+        height: size,
+        color: isActive ? Colors.black : Colors.grey,
+      ).padding(bottom: 5),
+      Text(
+        name,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: isActive ? Colors.black : Colors.grey,
+          fontSize: 10,
+        ),
+      ).flexible(),
+    ].toColumn();
   }
 
   AppBar _appBar() {
@@ -146,7 +183,8 @@ class HomeView extends GetView<HomeController> {
           child: AspectRatio(aspectRatio: 1, child: VideoPlayer(_controller)),
         ).gestures(onTap: () => controller.onTapDetail(item)),
         Positioned(
-          bottom: 0, left: 0,
+          bottom: 0,
+          left: 0,
           child: Row(
             children: [
               SvgPicture.asset(
